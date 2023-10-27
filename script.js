@@ -80,6 +80,14 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+//Balance using reduce method
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 //Computing Usernames using map method
 
 const createUsername = function (accs) {
@@ -92,7 +100,6 @@ const createUsername = function (accs) {
   });
 };
 createUsername(accounts);
-console.log(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -253,7 +260,7 @@ console.log(withdrawals);
 const withdrawalsFor = [];
 for (const mov of movements) if (mov < 0) withdrawalsFor.push(mov);
 console.log(withdrawalsFor);
-*/
+
 
 //REDUCE METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -269,3 +276,4 @@ let balance2 = 0;
 for (const mov of movements) balance2 += mov;
 
 console.log(balance);
+*/
