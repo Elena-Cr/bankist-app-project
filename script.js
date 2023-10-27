@@ -80,6 +80,19 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+//Computing Usernames
+
+const createUsername = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('');
+  });
+};
+createUsername(accounts);
+console.log(accounts);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -188,7 +201,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
-*/
+
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -215,3 +228,4 @@ const movDescriptions = movements.map(
 );
 
 console.log(...movDescriptions);
+*/
