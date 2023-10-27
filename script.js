@@ -229,7 +229,7 @@ const movDescriptions = movements.map(
 );
 
 console.log(...movDescriptions);
-*/
+
 
 //FILTER METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -253,3 +253,19 @@ console.log(withdrawals);
 const withdrawalsFor = [];
 for (const mov of movements) if (mov < 0) withdrawalsFor.push(mov);
 console.log(withdrawalsFor);
+*/
+
+//REDUCE METHOD
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// const balance = movements.reduce(function (acc, current, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + current;
+// }, 0);
+
+const balance = movements.reduce((acc, current) => acc + current, 0);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+
+console.log(balance);
