@@ -80,7 +80,7 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-//Computing Usernames
+//Computing Usernames using map method
 
 const createUsername = function (accs) {
   accs.forEach(function (acc) {
@@ -93,6 +93,7 @@ const createUsername = function (accs) {
 };
 createUsername(accounts);
 console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -202,7 +203,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
-
+//MAP METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const eurToUsd = 1.1;
@@ -229,3 +230,26 @@ const movDescriptions = movements.map(
 
 console.log(...movDescriptions);
 */
+
+//FILTER METHOD
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const deposits = movements.filter(function (mov) {
+  return mov > 0;
+});
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+// console.log(withdrawals);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
+const withdrawalsFor = [];
+for (const mov of movements) if (mov < 0) withdrawalsFor.push(mov);
+console.log(withdrawalsFor);
