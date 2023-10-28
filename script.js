@@ -197,18 +197,6 @@ currenciesUnique.forEach(function (value, key, map) {
   console.log(`${key}:${value}`);
 });
 
-//CHALLENGE
-const checkDogs = function (dogsJulia, dogsKate) {
-  let dogsJuliaCorrect = [...dogsJulia].slice(1, -2);
-  let dogs = [...dogsJuliaCorrect, ...dogsKate];
-  dogs.forEach(function (age, index, array) {
-    const type = age > 3 ? `an adult, and is ${age} years old` : 'a puppy';
-    console.log(`Dog number ${index + 1} is ${type}`);
-  });
-};
-
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 //MAP METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -260,7 +248,7 @@ console.log(withdrawals);
 const withdrawalsFor = [];
 for (const mov of movements) if (mov < 0) withdrawalsFor.push(mov);
 console.log(withdrawalsFor);
-*/
+
 
 //REDUCE METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -284,3 +272,37 @@ const maximum = movements.reduce((acc, current) => {
   else return acc;
 }, movements[0]);
 console.log(maximum);
+*/
+//CHALLENGE 1
+const checkDogs = function (dogsJulia, dogsKate) {
+  let dogsJuliaCorrect = [...dogsJulia].slice(1, -2);
+  let dogs = [...dogsJuliaCorrect, ...dogsKate];
+  dogs.forEach(function (age, index, array) {
+    const type = age > 3 ? `an adult, and is ${age} years old` : 'a puppy';
+    console.log(`Dog number ${index + 1} is ${type}`);
+  });
+};
+
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+//CHALLENGE 2
+const calcAverageHumanAge = function (ages) {
+  let humanAge = ages.map(function (age) {
+    return age <= 2 ? 2 * age : 16 + age * 4;
+  });
+  console.log(humanAge);
+  const humanAgeAdult = humanAge.filter(function (age) {
+    return age > 18;
+  });
+  console.log(humanAgeAdult);
+
+  const avgHumanAge =
+    humanAgeAdult.reduce(function (acc, age) {
+      return acc + age;
+    }, 0) / humanAgeAdult.length;
+  console.log(avgHumanAge);
+};
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
