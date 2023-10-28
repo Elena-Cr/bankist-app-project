@@ -260,7 +260,7 @@ console.log(withdrawals);
 const withdrawalsFor = [];
 for (const mov of movements) if (mov < 0) withdrawalsFor.push(mov);
 console.log(withdrawalsFor);
-
+*/
 
 //REDUCE METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -276,4 +276,11 @@ let balance2 = 0;
 for (const mov of movements) balance2 += mov;
 
 console.log(balance);
-*/
+
+//Maximum value
+
+const maximum = movements.reduce((acc, current) => {
+  if (acc < current) return current;
+  else return acc;
+}, movements[0]);
+console.log(maximum);
