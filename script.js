@@ -119,6 +119,22 @@ const createUsername = function (accs) {
 };
 createUsername(accounts);
 
+//Event handlers
+let currentAccount;
+
+btnLogin.addEventListener('click', function (event) {
+  //prevent form from submiting
+  event.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('LOGIN');
+  }
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -291,6 +307,19 @@ const maximum = movements.reduce((acc, current) => {
 }, movements[0]);
 console.log(maximum);
 
+
+
+
+//PIPELINE
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
+
 //CHALLENGE 1
 const checkDogs = function (dogsJulia, dogsKate) {
   let dogsJuliaCorrect = [...dogsJulia].slice(1, -2);
@@ -305,33 +334,40 @@ checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 // checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 
 //CHALLENGE 2
-const calcAverageHumanAge = function (ages) {
-  let humanAge = ages.map(function (age) {
-    return age <= 2 ? 2 * age : 16 + age * 4;
-  });
-  console.log(humanAge);
-  const humanAgeAdult = humanAge.filter(function (age) {
-    return age > 18;
-  });
-  console.log(humanAgeAdult);
+// const calcAverageHumanAge = function (ages) {
+//   let humanAge = ages.map(function (age) {
+//     return age <= 2 ? 2 * age : 16 + age * 4;
+//   });
+//   console.log(humanAge);
+//   const humanAgeAdult = humanAge.filter(function (age) {
+//     return age > 18;
+//   });
+//   console.log(humanAgeAdult);
 
-  const avgHumanAge =
-    humanAgeAdult.reduce(function (acc, age) {
-      return acc + age;
-    }, 0) / humanAgeAdult.length;
-  console.log(avgHumanAge);
-};
+//   const avgHumanAge =
+//     humanAgeAdult.reduce(function (acc, age) {
+//       return acc + age;
+//     }, 0) / humanAgeAdult.length;
+//   console.log(avgHumanAge);
+// };
+
+//CHALLENGE 3
+
+const calcAverageHumanAge = ages =>
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age > 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
 
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
-*/
 
-//PIPELINE
+//the FIND Method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
-const totalDepositsUSD = movements
-  .filter(mov => mov > 0)
-  .map(mov => mov * eurToUsd)
-  .reduce((acc, mov) => acc + mov, 0);
+const firstWithdrawl = movements.find(mov => mov < 0);
+console.log(firstWithdrawl);
 
-console.log(totalDepositsUSD);
+console.log(accounts);
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+*/
