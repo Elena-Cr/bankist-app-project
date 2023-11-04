@@ -503,7 +503,7 @@ console.log(movements);
 // });
 movements.sort((a, b) => b - a);
 console.log(movements);
-*/
+
 
 console.log([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 console.log(new Array(1, 2, 3, 4, 5, 6, 7, 8, 9));
@@ -517,3 +517,4 @@ console.log(x);
 //Array from
 const y = Array.from({ length: 7 }, () => 1);
 console.log(y);
+*/
